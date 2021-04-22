@@ -11,6 +11,9 @@ function sharedContent(content) {
       <title>FacBook</title>
     </head>
     <body>
+    <header>
+    <a href="/new-user">Add a new profile!</a>
+    </header>
       ${content}
     </body>
     </html>

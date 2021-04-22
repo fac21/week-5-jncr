@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS people, hobbies CASCADE;
+DROP TABLE IF EXISTS people, interests CASCADE;
 
 CREATE TABLE people (
     github_username TEXT PRIMARY KEY,

@@ -53,7 +53,7 @@ const html = `
               `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $4, $5);`, justPeopleValues
           ).then(() => {
           db.query(
-            "INSERT INTO interests(username, interest) VALUES($1, $2); ",
+            "INSERT INTO interests(username, activity) VALUES($1, $2); ",
             hobbyValues
           )}).then(() => {
           response.redirect("/");
