@@ -10,9 +10,9 @@ if (!DB_URL) throw new Error("DB_URL does not exist");
 const options = {
 
     connectionString: DB_URL,
-    // ssl: {
-    //     rejectUnauthorized: false
-    //   }
+    ssl: {
+        rejectUnauthorized: false
+      }
 
 };
 const db = new pg.Pool(options);
