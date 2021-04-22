@@ -22,32 +22,8 @@ const html = `
 <label for="pronoun">Select your pronoun</label>
 <input type="text" id="pronoun" name="pronoun" required/>
 
-
-<label for="interests">Interests</label>
-
-
-
-<div id="interests">
-<input type="checkbox" name="reading" id="reading" value="Reading"/>
-<label for="reading">Reading</label>
-</div>
-<div>
-<input type="checkbox" name="cooking" id="cooking" value="Cooking"/>
-<label for="cooking">Cooking</label>
-</div>
-<div>
-<input type="checkbox" name="sport" id="sport" value="Sport"/>
-<label for="sport">Sport</label>
-</div>
-<div>
-<input type="checkbox" name="coding" id="coding" value="coding"/>
-<label for="coding">Coding</label>
-</div>
-<div>
-<input type="checkbox" name="travel" id="travel" value="travel" />
-<label for="travel">Travel</label>
-</div>
-</select>
+<label for="interest">Main interest</label>
+<input type="text" id="interest" name="interest" required/>
 
 <label for="cohort">Cohort</label>
 <input type="text" id="cohort" name="cohort" required/>
@@ -71,13 +47,15 @@ const html = `
 
       function post(request, response) {
           const data = request.body;
-         console.log(data)
-            const values = Object.values(data);
-            console.log(values)
+          const justPeopleValues = [data.name, data.github_username, data.pronoun, data.cohort, data.location];
+          const hobbyValues = [data.github_username, data.interest];
           db.query(
-              "INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $9, $10)",
-              values
+              `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $4, $5);`, justPeopleValues
           ).then(() => {
+          db.query(
+            "INSERT INTO interests(username, interest) VALUES($1, $2); ",
+            hobbyValues
+          )}).then(() => {
           response.redirect("/");
           
      }
