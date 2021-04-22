@@ -15,12 +15,10 @@ function extractUserInfo(user) {
   let list = "";
   userInfo.map((info) => {
     list += `
-        <li>${info}</li>
-        `;
-  });
-  console.log("list", list, typeof list);
+        <li>${info}</li>`
   return list;
-}
+
+})}
 
 function get(request, response) {
   db.query("SELECT * FROM people").then((result) => {
@@ -30,26 +28,49 @@ function get(request, response) {
       .map((user) => {
         return `
         <li>${user.github_username}</li>
+
+        <button name="user" value="${user.github_username}" aria-label="View ${user.github_username}">
+
         <form action="/delete-user" method="POST" style="display: inline;">
         <button name="name" value="${user.github_username}" aria-label="Delete ${user.github_username}">
             <i class="far fa-trash-alt"></i>
         </button>
         </form>
-        `;
-      })
-      .join("");
+        `
+    }).join("");
+        
+        // const userList = users.map((user) => {
+        //     return extractUserInfo(user)
+        // })
+        // `<li>${user.github_username}</li>`).join("");
+
+         const body = `<ul>${userList}</ul>`;
+         const profile = users.map((user) => {
+             return extractUserInfo(user) + `<br/>`
+         }).join('')
+        
+        // const body = `<ul>${userList.join("")}</ul>`;
+        const html = templates.sharedContent(body, profile);
+        response.send(html);
+    });
+  }
+
+  
+    //     `;
+    //   })
+    //   .join("");
 
     // const userList = users.map((user) => {
     //     return extractUserInfo(user)
     // })
     // `<li>${user.github_username}</li>`).join("");
 
-    const body = `<ul>${userList}</ul>`;
+    // const body = `<ul>${userList}</ul>`;
 
     // const body = `<ul>${userList.join("")}</ul>`;
-    const html = templates.sharedContent(body);
-    response.send(html);
-  });
-}
+//     const html = templates.sharedContent(body);
+//     response.send(html);
+//   });
+// }
 
 module.exports = { get };
