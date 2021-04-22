@@ -1,4 +1,5 @@
 const db = require("../database/connection.js");
+const model = require("../database/model.js");
 
 const html = `
     <!doctype html>
@@ -37,31 +38,23 @@ const html = `
       </body>
     </html>`;
 
-    function newUser (request, response) {
-  
-        response.send(html);
-       
-      }
-      
-  
+function newUser(request, response) {
+  response.send(html);
+}
 
-      function post(request, response) {
-          const data = request.body;
-          const justPeopleValues = [data.name, data.github_username, data.pronoun, data.cohort, data.location];
-          const hobbyValues = [data.github_username, data.interest];
-          db.query(
-              `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $4, $5);`, justPeopleValues
-          ).then(() => {
-          db.query(
-            "INSERT INTO interests(username, activity) VALUES($1, $2); ",
-            hobbyValues
-          )}).then(() => {
-          response.redirect("/");
-          
-     }
-      );
-          
-      }
+function post(request, response) {
+  const data = request.body;
+  const justPeopleValues = [
+    data.name,
+    data.github_username,
+    data.pronoun,
+    data.cohort,
+    data.location,
+  ];
+  const hobbyValues = [data.github_username, data.interest];
+  model.addUser(justPeopleValues, hobbyValues).then(() => {
+    response.redirect("/");
+  });
+}
 
-      module.exports = {newUser, post} ;
-
+module.exports = { newUser, post };
