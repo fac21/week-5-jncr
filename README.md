@@ -1,4 +1,6 @@
-# week-5-jncr
+# FACBOOK
+
+http://facboook.herokuapp.com/
 
 - we created skeleton file structure together first - setting up express and evironment variables
 - we created a kanban, without giving estimate timings
