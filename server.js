@@ -1,10 +1,10 @@
 const express = require('express');
 const newUser = require('./routes/new-user.js')
+const home = require("./routes/home.js");
+
 const server = express();
 
-server.get('/', (req, res) => {
-    res.send('HI <3')
-});
+server.get("/", home.get);
 
 const bodyParser = express.urlencoded();
 
