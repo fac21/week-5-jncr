@@ -1,4 +1,4 @@
-function sharedContent(content) {
+function sharedContent(content, profile) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -13,9 +13,11 @@ function sharedContent(content) {
     </head>
     <body>
     <header>
+    <img src="/images/facbook-logo.png" alt="facbook logo"><br/>
     <a href="/new-user">Add a new profile!</a>
     </header>
       ${content}
+      ${profile}
     </body>
     </html>
     `;

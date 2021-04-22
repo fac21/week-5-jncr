@@ -21,7 +21,6 @@ function extractUserInfo(user) {
     })
     console.log("list", list, typeof(list))
     return list;
-    
 }
 
 function get(request, response) {
@@ -31,6 +30,7 @@ function get(request, response) {
       const userList = users.map((user) => {
         return `
         <li>${user.github_username}</li>
+        <button name="user" value="${user.github_username}" aria-label="View ${user.github_username}">
         <form action="/delete-blog" method="POST" style="display: inline;">
         <button name="name" value="${user.github_username}" aria-label="Delete ${user.github_username}">
             <i class="far fa-trash-alt"></i>
@@ -39,23 +39,22 @@ function get(request, response) {
         `
     }).join("");
         
-          
-        
-        
-        
-        
         // const userList = users.map((user) => {
         //     return extractUserInfo(user)
         // })
         // `<li>${user.github_username}</li>`).join("");
 
          const body = `<ul>${userList}</ul>`;
+         const profile = users.map((user) => {
+             return extractUserInfo(user) + `<br/>`
+         }).join('')
         
         // const body = `<ul>${userList.join("")}</ul>`;
-        const html = templates.sharedContent(body);
+        const html = templates.sharedContent(body, profile);
         response.send(html);
     });
   }
 
+  
 
   module.exports = { get };

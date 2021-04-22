@@ -5,6 +5,9 @@ const deleteUser = require("./routes/delete-user.js");
 
 const server = express();
 
+const staticHandler = express.static("public");
+server.use(staticHandler);
+
 server.get("/", home.get);
 
 const bodyParser = express.urlencoded();
