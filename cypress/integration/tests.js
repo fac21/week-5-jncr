@@ -28,3 +28,4 @@ it("can add new user", () => {
     cy.visit("/");
     cy.get("ul").contains("Sally");
 })
+

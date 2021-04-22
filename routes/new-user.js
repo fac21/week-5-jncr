@@ -20,14 +20,14 @@ const html = `
 <label for="github_username">Github username</label>
 <input type="text" id="github_username" name="github_username" required/>
 
-<label for="pronoun">Select your pronoun</label>
+<label for="pronoun">Enter your pronoun</label>
 <input type="text" id="pronoun" name="pronoun" required/>
 
 <label for="interest">Main interest</label>
 <input type="text" id="interest" name="interest" required/>
 
-<label for="cohort">Cohort</label>
-<input type="text" id="cohort" name="cohort" required/>
+<label for="cohort">Cohort number</label>
+<input type="number" id="cohort" name="cohort" required/>
 
 <label for="location">Where are you based?</label>
 <input type="text" id="location" name="location" required/>
