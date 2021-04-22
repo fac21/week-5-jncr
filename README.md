@@ -12,3 +12,15 @@
 
 ![image](https://user-images.githubusercontent.com/31373245/115590336-bd6b0b00-a2c8-11eb-881d-f63abe7e5c28.png)
 
+
+
+Things we learnt:
+
+Multiple queries
+
+ - trying to insert into different tables in one query.
+rather than using new Object.values(data), we created two arrays containing the data that we wanted (give exmaple) [data.name, data.cohort]
+
+Cypress testing
+
+Error message: relation 'interests' does not exists - on before each tests, to reset the db - we realised that our table name had been updated but we hadn't udated our DROP TABLE IF EXISTS command;
