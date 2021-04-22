@@ -1,6 +1,7 @@
 const express = require('express');
 const newUser = require('./routes/new-user.js')
 const home = require("./routes/home.js");
+const deleteUser = require("./routes/delete-user.js");
 
 const server = express();
 
@@ -10,6 +11,8 @@ const bodyParser = express.urlencoded();
 
 server.get("/new-user", newUser.newUser);
 server.post("/new-user", bodyParser, newUser.post);
+server.post("/delete-user", bodyParser, deleteUser.post);
+
 
 
 const PORT = process.env.PORT || 3000;
