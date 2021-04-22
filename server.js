@@ -1,9 +1,9 @@
 const express = require('express');
+const home = require("./routes/home.js");
+
 const server = express();
 
-server.get('/', (req, res) => {
-    res.send('HI <3')
-});
+server.get("/", home.get);
 
 const PORT = process.env.PORT || 3000;
 
