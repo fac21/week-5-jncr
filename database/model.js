@@ -31,5 +31,19 @@ function addUser(values1, values2) {
     });
 }
 
+function dataProcess(request) 
+{
+  const data = request.body;
+  const justPeopleValues = [
+    data.name,
+    data.github_username,
+    data.pronoun,
+    data.cohort,
+    data.location,
+  ];
+  const hobbyValues = [data.github_username, data.interest];
+  return addUser(justPeopleValues, hobbyValues);
+}
+
 // module.exports = { getPeople };
-module.exports = { deleteUser, addUser };
+module.exports = { deleteUser, addUser, dataProcess };
