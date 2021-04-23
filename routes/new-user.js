@@ -11,30 +11,30 @@ const html = `
         <title>New user</title>
       </head>
       <body>
-<main>
+        <main>
 
-<form method="POST">
-<label for="name">Name</label> 
-<input type="text" id="name" name="name" required/>
+          <form method="POST">
+            <label for="name">Name</label> 
+            <input type="text" id="name" name="name" required/>
 
-<label for="github_username">Github username</label>
-<input type="text" id="github_username" name="github_username" required/>
+            <label for="github_username">Github username</label>
+            <input type="text" id="github_username" name="github_username" required/>
 
-<label for="pronoun">Enter your pronoun</label>
-<input type="text" id="pronoun" name="pronoun" required/>
+            <label for="pronoun">Enter your pronoun</label>
+            <input type="text" id="pronoun" name="pronoun" required/>
 
-<label for="interest">Main interest</label>
-<input type="text" id="interest" name="interest" required/>
+            <label for="interest">Main interest</label>
+            <input type="text" id="interest" name="interest" required/>
 
-<label for="cohort">Cohort number</label>
-<input type="number" id="cohort" name="cohort" required/>
+            <label for="cohort">Cohort number</label>
+            <input type="number" id="cohort" name="cohort" placeholder="e.g. 21" required/>
 
-<label for="location">Where are you based?</label>
-<input type="text" id="location" name="location" required/>
+            <label for="location">Where are you based?</label>
+            <input type="text" id="location" name="location" required/>
 
-<button type="submit" value="Add yourself!"> </button>
-</form>
-</main>
+            <button type="submit" value="Add yourself!">Add yourself!</button>
+          </form>
+        </main>
       </body>
     </html>`;
 

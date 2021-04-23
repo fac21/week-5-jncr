@@ -13,6 +13,11 @@ function deleteUser(user) {
 }
 
 function addUser(values1, values2) {
+  const cohortInput = values1[3];
+  const integer = parseInt(cohortInput, 10);
+  if (Number.isNaN(integer)) {
+    throw new Error("cohort number is NaN")
+  }
   return db
     .query(
       `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $4, $5);`,

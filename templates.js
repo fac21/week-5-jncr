@@ -1,4 +1,4 @@
-function sharedContent(content, profile) {
+function sharedContent(content) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -17,7 +17,6 @@ function sharedContent(content, profile) {
     <a href="/new-user">Add a new profile!</a>
     </header>
       ${content}
-      ${profile}
     </body>
     </html>
     `;
