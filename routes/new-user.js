@@ -1,6 +1,6 @@
 const db = require("../database/connection.js");
 const model = require("../database/model.js");
-const { practice } = require("../database/model.js");
+const { dataProcess } = require("../database/model.js");
 
 const html = `
     <!doctype html>
@@ -45,7 +45,7 @@ function newUser(request, response) {
 
 function post(request, response) {
   {
-    practice(request);
+    dataProcess(request);
     response.redirect("/");
   };
 }

@@ -26,7 +26,7 @@ function addUser(values1, values2) {
     });
 }
 
-function practice(request) 
+function dataProcess(request) 
 {
   const data = request.body;
   const justPeopleValues = [
@@ -41,4 +41,4 @@ function practice(request)
 }
 
 // module.exports = { getPeople };
-module.exports = { deleteUser, addUser, practice };
+module.exports = { deleteUser, addUser, dataProcess };
