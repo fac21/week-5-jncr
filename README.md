@@ -15,8 +15,7 @@ http://facboook.herokuapp.com/
 ![image](https://user-images.githubusercontent.com/31373245/115590336-bd6b0b00-a2c8-11eb-881d-f63abe7e5c28.png)
 
 
-
-Things we learnt:
+## Code Review / Learnings:
 
 Multiple queries
 
@@ -128,4 +127,13 @@ We basically overrided this:
 
 ```
 
+## Lessons Learnt (SCG)
 
+Stop:
+
+Continue: 
+- Co-authored-by: Rosie O'Donnell <61861015+Rosie-ODonnell@users.noreply.github.com>
+
+Go:
+- Stop using add .
+- Improve on Commit messages
