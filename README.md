@@ -21,7 +21,88 @@ Things we learnt:
 Multiple queries
 
  - trying to insert into different tables in one query.
-rather than using new Object.values(data), we created two arrays containing the data that we wanted (give exmaple) [data.name, data.cohort]
+
+Oli's workshop with one table using an Array (called values) created by passing requeast.boddy in to Object.values():
+
+``` Javascript
+function post(request, response) {
+  const data = request.body;
+  const values = Object.values(data);
+  db.query(
+    "INSERT INTO users(username, age, location) VALUES($1, $2, $3)",
+    values
+  ).then(() => {
+    response.redirect("/");
+  });
+}
+```
+
+Our effort 1: 1 DB query (as per oli's) but with 2 SQL lines(1 for each table); Array of values created the same way as Oli's 
+
+``` Javascript
+function post(request, response) {
+  const data = request.body;
+  const values = Object.values(data);
+  db.query(
+    `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $5, $6)
+    INSERT INTO interests(username, activity) VALUES($2, $4);`,
+    values
+  )
+    .then(() => {
+      response.redirect("/");
+    });
+}
+```
+UnhandledPromiseRejectionWarning: error: syntax error at or near "INSERT"
+
+
+Our effort 2: A second DB query (1 for each table); ; Array of values created the same way as Oli's
+
+``` Javascript
+function post(request, response) {
+  const data = request.body;
+  const values = Object.values(data);
+  db.query(
+    `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $5, $6);`,
+    values
+  )
+    .then(() => {
+      db.query(
+        "INSERT INTO interests(username, activity) VALUES($2, $4); ",
+        values
+      );
+    })
+    .then(() => {
+      response.redirect("/");
+    });
+}
+```
+
+UnhandledPromiseRejectionWarning: error: could not determine data type of parameter $4
+
+
+- Our effort 3: Rather than using array created by new Object.values(data), we created two arrays containing the data that we wanted (give exmaple) [data.name, data.cohort]
+``` Javascript
+function post(request, response) {
+  const data = request.body;
+  const justPeopleValues = [data.name, data.github_username, data.pronoun, data.cohort, data.location,
+  ];
+  const hobbyValues = [data.github_username, data.interest];
+  db.query(
+    `INSERT INTO people(name, github_username, pronoun, cohort, location) VALUES($1, $2, $3, $4, $5);`,
+    justPeopleValues
+  )
+    .then(() => {
+      db.query(
+        "INSERT INTO interests(username, activity) VALUES($1, $2); ",
+        hobbyValues
+      );
+    })
+    .then(() => {
+      response.redirect("/");
+    });
+}
+```
 
 Cypress testing
 
