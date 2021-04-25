@@ -24,11 +24,18 @@ const html = `
             <label for="pronoun">Enter your pronoun</label>
             <input type="text" id="pronoun" name="pronoun" required/>
 
+            <select>
+              <option value="they/them">they/them</option>
+              <option value="he/him">he/him</option>
+              <option value="she/her">she/her</option>
+              <option value="other">other</option>
+            </select>
+
             <label for="interest">Main interest</label>
             <input type="text" id="interest" name="interest" required/>
 
             <label for="cohort">Cohort number</label>
-            <input type="number" id="cohort" name="cohort" placeholder="e.g. 21" required/>
+            <input type="number" min='1' max='30' id="cohort" name="cohort" placeholder="e.g. 21" required/>
 
             <label for="location">Where are you based?</label>
             <input type="text" id="location" name="location" required/>
