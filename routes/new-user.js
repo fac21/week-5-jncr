@@ -1,6 +1,6 @@
 const db = require("../database/connection.js");
 const model = require("../database/model.js");
-const { dataProcess } = require("../database/model.js");
+const { createArraysFromFormData } = require("../database/model.js");
 
 const html = `
     <!doctype html>
@@ -45,7 +45,7 @@ function newUser(request, response) {
 
 function post(request, response) {
   {
-    dataProcess(request);
+    createArraysFromFormData(request);
     response.redirect("/");
   };
 }
